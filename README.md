@@ -19,10 +19,23 @@ yum remove docker \
 ```
 
 2. 安装yum-utils软件包
-
-   ```shell
-   yum install -y yum-utils
-   ```
+    2.1 yum的源不可用
+        ```shell
+        wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.163.com/.help/CentOS7-Base-163.repo
+        
+        vim /etc/yum.repos.d/CentOS-Base.repo 
+        
+        :%s/$releasever/7/ge
+        
+        yum clean all
+        
+        yum makecache
+        ```
+    2.2 安装 yum-utils
+    
+       ```shell
+       yum install -y yum-utils
+       ```
 
 3. 设置Docker仓库（这里使用阿里云地址）
 
